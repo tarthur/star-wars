@@ -1,7 +1,10 @@
 import PersonDetails from './person-details';
-import PlanetDetails from './planet-details';
 import StarshipDetails from './starship-details';
 import CharactersDetails from './characters-details';
+import PlanetsDetails from './planets-details';
+import FilmsDetails from './films-details';
+import SpeciesDetails from './species-details';
+import VehiclesDetails from './vehicles-details';
 
 import {
   PlanetList,
@@ -12,16 +15,22 @@ import {
   CharactersList,
 } from './item-lists';
 
+
+
+
+
 export {
-  PersonDetails,
-  PlanetDetails,
+  VehiclesDetails,
   StarshipDetails,
+  CharactersDetails,
+  PlanetsDetails,
+  FilmsDetails,
+  SpeciesDetails,
+
   SpeciesList,
   VehiclesList,
   CharactersList,
-  
   PlanetList,
   StarshipList,
   FilmsList,
-  CharactersDetails
 };

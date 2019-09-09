@@ -9,7 +9,14 @@ import {
   FilmsList,
   SpeciesList,
   VehiclesList,
-  CharactersList, } from '../sw-components';
+  CharactersList,
+  
+  PlanetsDetails,
+  StarshipDetails,
+  CharactersDetails,
+  FilmsDetails,
+  VehiclesDetails,
+  SpeciesDetails, } from '../sw-components';
 
 import {
   StarshipsPage,
@@ -20,12 +27,7 @@ import { SwapiServiceProvider } from '../swapi-service-context';
 
 import './app.css';
 
-import {BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom';
-import StarshipDetails from '../sw-components/starship-details';
-import CharactersDetails from '../sw-components/characters-details';
-import FilmsDetails from '../sw-components/films-details';
-import SpeciesDetails from '../sw-components/species-details';
-import VehiclesDetails from '../sw-components/vehicles-details';
+import {BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
 
 
 
@@ -92,6 +94,12 @@ export default class App extends Component {
                           const { id } = match.params;
                           
                           return <VehiclesDetails itemId={id} category="vehicles" />
+                        }}/>
+                <Route path="/planets/:id"
+                        render={({ match }) => {
+                          const { id } = match.params;
+                          
+                          return <PlanetsDetails itemId={id} category="planets" />
                         }}/>
 
                 <Route render={() => <h2>Page not found</h2>} />

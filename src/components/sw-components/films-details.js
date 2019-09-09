@@ -36,24 +36,6 @@ class FilmsDetails extends React.Component {
         });
       });
   }
-  ddfsd(item) {
-    const boxes = []; 
-
-    for (let key in item) {
-      let prop = item[key];
-      
-      if (prop.push && prop.length > 0) {
-        boxes.push({
-          title: key,
-          arr: item[key]
-        })
-      }
-    }
-
-    console.log(boxes)
-
-    return boxes;
-  }
 
   render() {
     const { item } = this.state;
@@ -74,7 +56,7 @@ class FilmsDetails extends React.Component {
           <Record field="producer" label="Producer(s)" />
           <Record field="openingCrawl" label="Opening Crawl" />
         </ItemDetails>
-        {/* <RelatedDataBoxes boxes={this.ddfsd(item)} /> */}
+        <RelatedDataBoxes boxes={item.boxes} />
       </div>
     );
   }

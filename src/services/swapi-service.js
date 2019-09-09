@@ -57,7 +57,20 @@ export default class SwapiService {
     const id = this._extractId(item);
     const image = this.getImage((category === 'people' ? 'characters' : category), {id});
     const name = item.name ? item.name : item.title
-    const defaultProps = {id, image, name}
+    const boxes = []; 
+
+    for (let key in item) {
+      let prop = item[key];
+      
+      if (prop.push && prop.length > 0) {
+        boxes.push({
+          title: key,
+          arr: item[key]
+        })
+      }
+    }
+
+    const defaultProps = {id, image, name, boxes}
 
     switch(category) {
       case 'films' :
@@ -117,24 +130,31 @@ export default class SwapiService {
 
       case 'vehicles' :
         
-      // Model: Digger Crawler
-      // Manufacturer: Corellia Mining Corporation
-      // Class: Wheeled
-      // Cost: 150,000 credits
-      // Speed: 30km/h
-      // Length: 36.8m
-      // Cargo Capacity: 50 metric tons
-      // Mimimum Crew: 46
-      // Passengers: 30
-      // debugger
         return {
-          // ...defaultProps, averageLifespan, averageHeight,
-          // classification: item.classification,
-          // designation: item.designation,
-          // language: item.language,
-          // hairColors: item.hair_colors,
-          // skinColors: item.skin_colors,
-          // eyeColors: item.eye_colors,
+          ...defaultProps, 
+          model: item.model,
+          manufacturer: item.manufacturer,
+          cls: item.vehicle_class,
+          creditsCost: item.cost_in_credits,
+          speed: item.max_atmosphering_speed,
+          length: item.length,
+          cargoCapacity: item.cargo_capacity,
+          crew: item.crew,
+          passengers: item.passengers,
+        }
+
+      case 'planets' :
+        
+        return {
+          ...defaultProps, 
+          population: item.population,
+          rotationReriod: item.rotation_period,
+          orbitalPeriod: item.orbital_period,
+          diameter: item.diameter,
+          gravity: item.gravity,
+          terrain: item.terrain,
+          surfaceWater: item.surface_water,
+          climate: item.climate,
         }
     }
   }
@@ -155,6 +175,9 @@ export default class SwapiService {
   };
 
   getImage = (category, {id}) => {
+    console.log('---------------------->>>')
+    console.log(category)
+    console.log(id)
     return `${this._imageBase}/${category}/${id}.jpg`
   };
 
@@ -167,7 +190,7 @@ export default class SwapiService {
 
   
 
-  getThisUrl = async (url) => {
+  getThisUrl = async (url, category) => {
     console.log(url)
     const res = await fetch(url);
 
@@ -175,10 +198,33 @@ export default class SwapiService {
       throw new Error(`Could not fetch ${url}` +
         `, received ${res.status}`)
     }
-    let gggg = await res.json();
+
+    // birth_year: "47BBY"
+    // created: "2014-12-10T15:53:41.121000Z"
+    // edited: "2014-12-20T21:17:50.319000Z"
+    // eye_color: "blue"
+    // films: (3) ["https://swapi.co/api/films/5/", "https://swapi.co/api/films/6/", "https://swapi.co/api/films/1/"]
+    // gender: "female"
+    // hair_color: "brown"
+    // height: "165"
+    // homeworld: "https://swapi.co/api/planets/1/"
+    // mass: "75"
+    // name: "Beru Whitesun lars"
+    // skin_color: "light"
+    // species: ["https://swapi.co/api/species/1/"]
+    // starships: []
+    // url: "https://swapi.co/api/people/7/"
+    // vehicles: []
+    // __proto__: Object
+
+
+    const item = await res.json();
+    const id = this._extractId(item);
+    
     return {
-      ...gggg,
-      id: this._extractId(gggg)
+      id,
+      name: item.name ? item.name : item.title,
+      image: this.getImage((category === 'people' ? 'characters' : category), {id}),
     }
 
     

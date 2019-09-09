@@ -7,7 +7,7 @@ import Breadcrumbs from '../breadcrumbs'
 
 
 
-class VehiclesDetails extends React.Component {
+class PlanetsDetails extends React.Component {
   state = {
     item: null,
   };
@@ -61,20 +61,19 @@ class VehiclesDetails extends React.Component {
     if (!item) {
       return <span>Select a item from a list</span>;
     }
-
+        
     return (
       <div>
         <Breadcrumbs />
         <ItemDetails item={item} image={item.image}>
-          <Record field="model" label="Model" />
-          <Record field="manufacturer" label="Manufacturer" />
-          <Record field="cls" label="Class" />
-          <Record field="creditsCost" label="Cost" />
-          <Record field="speed" label="Speed" />
-          <Record field="length" label="Length" />
-          <Record field="cargoCapacity" label="Cargo Capacity" />
-          <Record field="crew" label="Mimimum Crew" />
-          <Record field="passengers" label="Passengers" />
+          <Record field="population" label="Population" />
+          <Record field="rotationReriod" label="Rotation Period" />
+          <Record field="orbitalPeriod" label="Orbital Period" />
+          <Record field="diameter" label="Diameter" />
+          <Record field="gravity" label="Gravity" />
+          <Record field="terrain" label="Terrain" />
+          <Record field="surfaceWater" label="Surface Water" />
+          <Record field="climate" label="Climate" />
         </ItemDetails>
         {/* <RelatedDataBoxes boxes={this.ddfsd(item)} /> */}
       </div>
@@ -88,4 +87,4 @@ const mapMethodsToProps = (swapiService) => {
   }
 };
 
-export default withSwapiService(mapMethodsToProps)(VehiclesDetails);
+export default withSwapiService(mapMethodsToProps)(PlanetsDetails);

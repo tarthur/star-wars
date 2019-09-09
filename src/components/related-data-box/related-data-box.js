@@ -9,6 +9,8 @@ export default class RelatedDataBox extends Component {
   };
 
   componentDidMount() {
+    console.log('this.props')
+    console.log(this.props)
     this.updateItem();
   }
 
@@ -24,7 +26,7 @@ export default class RelatedDataBox extends Component {
     const {boxUrl, getData} = this.props;
 
     boxUrl.arr.forEach(el => {
-      getData(el)
+      getData(el, this.props.category)
         .then((itemmmm) => {
           this.setState({
             itemsArray: [

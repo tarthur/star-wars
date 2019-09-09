@@ -13,10 +13,7 @@ import {
 const RelatedDataBoxes = (props) => {
 
   const boxes = props.boxes.map((arr, i) => {
-    
-    console.log('>>>')
-    console.log(arr)
-    return <RelatedDataBox boxUrl={arr} getData={props.getData} />
+    return <RelatedDataBox boxUrl={arr} getData={props.getData} category={arr.title} />
   })
 
   return (

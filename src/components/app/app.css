@@ -1,0 +1,43 @@
+.card-222 {
+  flex: 0 0 20%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 20%;
+}
+
+
+.logo {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.button-row {
+  margin: 0 0 1rem 0;
+}
+
+.button-row button {
+  margin-right: 1rem;
+}
+
+.stardb-app .row {
+  margin-bottom: 1rem;
+}
+
+.login-row {
+
+}
+
+ul.pagination {
+
+}
+ul.pagination .page-item {
+  cursor: pointer;
+  user-select: none;
+}
+
+ul.pagination .page-item.disabled {
+  cursor: default;
+}

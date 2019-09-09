@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './related-data-box.css';
 import Spinner from '../spinner';
+import {Link} from 'react-router-dom'
 
 export default class RelatedDataBox extends Component {
   state = {
@@ -100,16 +101,20 @@ export default class RelatedDataBox extends Component {
         itemsArray
       } = this.state;
 
+      // debugger;
+
       const items = itemsArray.map(item => {
         if (this.props.boxUrl.title === 'films')
           return <div>
-            <img src={item['image']} />
+            <img src={item['image']} style={{width: '70px'}} />
             {item['episode_id'] + ': ' + item['title']}
           </div>
         else 
         return <div>
-          <img src={item['image']} />
-          {item['name']}
+          <Link to={`/${this.props.category === 'characters' ? 'people' : this.props.category}/${item.id}`} >
+            <img src={item['image']} style={{width: '70px'}} />
+            {item['name']}
+          </Link>
         </div>
       })  
   

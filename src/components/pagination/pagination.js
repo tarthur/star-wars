@@ -17,6 +17,8 @@ class Pagination extends React.Component {
     const {count, pageSize} = this.props;
     const pagesCount = Math.ceil(count / pageSize);
 
+    console.log('countcountcountcountcountcount')
+    console.log(count)
     return (
       <div className="paginate-container">
         <ReactPaginate
@@ -29,6 +31,7 @@ class Pagination extends React.Component {
           nextLinkClassName="page-link"
           breakClassName="page-item"
           breakLinkClassName="page-link"
+          // breakLabel={null}
           previousLabel={'<'}
           nextLabel={'>'}
           pageCount={pagesCount}

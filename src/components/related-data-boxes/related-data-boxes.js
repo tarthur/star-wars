@@ -17,7 +17,7 @@ const RelatedDataBoxes = (props) => {
   })
 
   return (
-    <div>
+    <div className="row">
       {boxes}
     </div>
   );

@@ -26,6 +26,7 @@ import {
 import { SwapiServiceProvider } from '../swapi-service-context';
 
 import './app.css';
+import logo from '../../assets/images/logo.png'
 
 import {BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
 
@@ -42,7 +43,9 @@ export default class App extends Component {
           <Router>
             <div className="stardb-app">
               <h3 className="logo">
-                <Link to="/">StarDB</Link>
+                <Link to="/">
+                  <img src={logo} className="img-fluid" />
+                </Link>
               </h3>
 
               <Switch>

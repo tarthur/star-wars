@@ -26,7 +26,7 @@ const routes = [
 
 // map & render your breadcrumb components however you want.
 const Breadcrumbs = withBreadcrumbs(routes)(({ breadcrumbs }) => (
-  <div>
+  <div className="breadcrumbs">
     {breadcrumbs.map(({ match, breadcrumb }, index) => (
       <div className="bc" key={match.url} style={{display: 'inline-block'}}>
         <Link to={match.url || ""}>{breadcrumb}</Link>

@@ -55,7 +55,11 @@ const withData = (View) => {
       const { data, loading, error } = this.state;
 
       if (loading) {
-        return <Spinner />;
+        return (
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <Spinner />
+          </div>
+        )
       }
 
       if (error) {

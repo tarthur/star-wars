@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
-import Header from '../header';
+import Header from '../catalogs-list/catalogs-list';
 import ErrorBoundry from '../error-boundry';
 import SwapiService from '../../services/swapi-service';
+import {BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
 import { 
   StarshipList, 
   PlanetList, 
@@ -10,30 +10,19 @@ import {
   SpeciesList,
   VehiclesList,
   CharactersList,
-  
-  PlanetsDetails,
-  StarshipDetails,
+  FilmsDetail, 
+  SpeciesDetail,
   CharactersDetails,
-  FilmsDetails,
+  StarshipDetails,
   VehiclesDetails,
-  SpeciesDetails, } from '../sw-components';
-
-import {
-  StarshipsPage,
-  // PeoplePage,
-} from '../pages';
-
+  PlanetsDetails
+} from '../sw-components';
 import { SwapiServiceProvider } from '../swapi-service-context';
-
-import './app.css';
+import './app.scss';
 import logo from '../../assets/images/logo.png'
-
-import {BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
-
 
 
 export default class App extends Component {
-
   render() {
     const swapiService = new SwapiService();
 
@@ -50,64 +39,23 @@ export default class App extends Component {
 
               <Switch>
                 <Route path="/" exact component={Header} />
-                <Route path="/starships/page/:id" render={() => {
-                  return <StarshipList catalog="starships" />
-                }} />
-                <Route path="/planets/page/:id" render={() => {
-                  return <PlanetList catalog="planets" />
-                }} />
-                <Route path="/films/page/:id" render={() => {
-                  return <FilmsList catalog="films" />
-                }} />
-                <Route path="/species/page/:id" render={() => {
-                  return <SpeciesList catalog="species" />
-                }} />
-                <Route path="/vehicles/page/:id" render={() => {
-                  return <VehiclesList catalog="vehicles" />
-                }} />
-                <Route path="/people/page/:id" render={() => {
-                  return <CharactersList catalog="people" />
-                }} />
-                <Route path="/people/:id"
-                       render={({ match }) => {
-                         const { id } = match.params;
-                         
-                         return <CharactersDetails itemId={id} category="people" />
-                       }}/>
-                <Route path="/films/:id"
-                      render={({ match }) => {
-                        const { id } = match.params;
-                        
-                        return <FilmsDetails itemId={id} category="films" />
-                      }}/>
-                <Route path="/species/:id"
-                      render={({ match }) => {
-                        const { id } = match.params;
-                        
-                        return <SpeciesDetails itemId={id} category="species" />
-                      }}/>
-                <Route path="/starships/:id"
-                        render={({ match }) => {
-                          const { id } = match.params;
-                          
-                          return <StarshipDetails itemId={id} category="starships" />
-                        }}/>
-                <Route path="/vehicles/:id"
-                        render={({ match }) => {
-                          const { id } = match.params;
-                          
-                          return <VehiclesDetails itemId={id} category="vehicles" />
-                        }}/>
-                <Route path="/planets/:id"
-                        render={({ match }) => {
-                          const { id } = match.params;
-                          
-                          return <PlanetsDetails itemId={id} category="planets" />
-                        }}/>
+                
+                <Route path="/starships/page/:id" component={StarshipList} />
+                <Route path="/films/page/:id" component={FilmsList} />
+                <Route path="/planets/page/:id" component={PlanetList} />
+                <Route path="/vehicles/page/:id" component={VehiclesList} />
+                <Route path="/people/page/:id" component={CharactersList} />
+                <Route path="/species/page/:id" component={SpeciesList} />
+
+                <Route path="/films/:id" component={FilmsDetail} />
+                <Route path="/species/:id" component={SpeciesDetail} />
+                <Route path="/people/:id" component={CharactersDetails} />
+                <Route path="/starships/:id" component={StarshipDetails} />
+                <Route path="/vehicles/:id" component={VehiclesDetails} />
+                <Route path="/planets/:id" component={PlanetsDetails} />
 
                 <Route render={() => <h2>Page not found</h2>} />
               </Switch>
-              
             </div>
           </Router>
           

@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-
 import { withData } from '../hoc-helpers';
 import SwapiService from '../../services/swapi-service';
-import './item-list.css';
-import ItemCard from '../item-card'
+import ItemCard from '../item-card/item-card'
 
 
 const ItemList = (props) => {

@@ -181,7 +181,7 @@ export default class SwapiService {
     return `${this._imageBase}/${category}/${id}.jpg`
   };
 
-  getStarship = async (id, category) => {
+  getCategoryResource = async (id, category) => {
     const item = await this.getResource(`/${category}/${id}/`);
 
     return this.transformOptions(item, category)

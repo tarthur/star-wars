@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './related-data-box.css';
 import Spinner from '../spinner';
 import {Link} from 'react-router-dom'
-import Pagination from '../pagination'
+import SimplePagination from '../simple-pagination/simple-pagination'
 
 
 
@@ -10,7 +10,8 @@ export default class RelatedDataBox extends Component {
   state = {
     item: null,
     itemsArray: [],
-    img: null
+    img: null,
+    interval: [0, 3]
   };
 
   componentDidMount() {
@@ -60,9 +61,13 @@ export default class RelatedDataBox extends Component {
 
   }
 
-  onPaginationSelected() {
-
+  getInterval = (interval) => {
+    // есть баги в пагинации, еще нужно все просчитать
+    console.log(interval)
+    this.setState({interval})
   }
+
+
 
   render() {
   
@@ -97,7 +102,7 @@ export default class RelatedDataBox extends Component {
 
       const [...copyArr] = itemsArray;
 
-      const items = copyArr.slice(0, 3).map(item => {
+      const items = copyArr.slice(this.state.interval[0], this.state.interval[1]).map(item => {
         if (this.props.boxUrl.title === 'films')
           return <div>
             <img src={item['image']} style={{width: '70px'}} />
@@ -132,7 +137,7 @@ export default class RelatedDataBox extends Component {
             {items}
             </p>
             <div className="related-box__pagination">
-              <Pagination count={itemsArray.length} pageSize="3" current={1} onPageChanged={this.onPaginationSelected} />
+              <SimplePagination length={itemsArray.length} part="3" getInterval={this.getInterval} />
             </div>
           </div>
         </div>

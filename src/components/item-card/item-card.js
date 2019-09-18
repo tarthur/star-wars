@@ -1,19 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
+import Spinner from '../spinner';
+import style from './item-card.module.scss'
 
-import { withData } from '../hoc-helpers';
-import SwapiService from '../../services/swapi-service';
-import './item-card.css';
-import Pagination from '../pagination'
 
 export default class ItemCard extends React.Component {
   state = {
-    img: this.props.image
+    img: this.props.image,
+    loader: true,
+
   }
 
   onLoad = e => {
-    console.log(e.target)
+    this.setState({
+      loader: false,
+    })
   }
 
   onError = e => {
@@ -26,14 +27,18 @@ export default class ItemCard extends React.Component {
     const {id, name, catalog} = this.props
 
     return (
-      <div className="card-222 card-box" key={id}
-              // onClick={() => onItemSelected(id)}
-              >
+      <div className="catalog-card card-box" key={id} >
         <Link to={`/${catalog}/${id}`}>
           <div className="card">
-            <img style={{width: '100%'}} src={this.state.img} onLoad={this.onLoad} onError={this.onError} />
+            <div className={style.imgBox} >
+              {this.state.loader && <Spinner />}
+              <img className="img-fluid" 
+                    src={this.state.img}
+                    onLoad={this.onLoad} 
+                    onError={this.onError}/>
+            </div>
             <div className="card-body">
-              <h5 className="card-title">{name}</h5>
+              <h5 className={`card-title ${style.title}`} >{name}</h5>
             </div>
           </div>
         </Link>

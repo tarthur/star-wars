@@ -1,10 +1,12 @@
-import PersonDetails from './person-details';
-import StarshipDetails from './starship-details';
-import CharactersDetails from './characters-details';
-import PlanetsDetails from './planets-details';
-import FilmsDetails from './films-details';
-import SpeciesDetails from './species-details';
-import VehiclesDetails from './vehicles-details';
+import {
+  FilmsDetail,
+  SpeciesDetail,
+  CharactersDetails,
+  StarshipDetails,
+  VehiclesDetails,
+  PlanetsDetails,
+} from './films-details';
+
 
 import {
   PlanetList,
@@ -20,12 +22,12 @@ import {
 
 
 export {
-  VehiclesDetails,
-  StarshipDetails,
+  FilmsDetail,
+  SpeciesDetail,
   CharactersDetails,
+  StarshipDetails,
+  VehiclesDetails,
   PlanetsDetails,
-  FilmsDetails,
-  SpeciesDetails,
 
   SpeciesList,
   VehiclesList,

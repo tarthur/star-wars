@@ -1,19 +1,12 @@
 import React from 'react';
-import ItemList from '../item-list';
+import ItemList from '../item-list/item-list';
 import {
   withData,
   withSwapiService,
   withListNav,
-  compose } from '../hoc-helpers';
-
+  compose 
+} from '../hoc-helpers';
 import { withRouter } from 'react-router-dom';
-
-
-// const mapPersonMethodsToProps = (swapiService) => {
-//   return {
-//     getData: swapiService.getAllPeople
-//   };
-// };
 
 
 const mapMethodsToProps = (category) => {
@@ -26,20 +19,27 @@ const mapMethodsToProps = (category) => {
   };
 };
 
-const createList = (methodsToProps) => {
-  return compose(
-          withRouter,
-          withListNav({breadcrumbs: true}),
-          withSwapiService(methodsToProps),
-          withData,
-        )(ItemList);
+const setCatalog = catalog => View => {
+  return props => {
+    return <View  {...props} catalog={catalog} />
+  }
 }
 
+const createList = (methodsToProps, catalog) => {
+  return (
+    compose(
+      setCatalog(catalog),
+      withRouter,
+      withListNav({breadcrumbs: false}),
+      withSwapiService(methodsToProps),
+      withData,
+    )(ItemList)
+  )
+}
 
-
-export const PlanetList = createList(mapMethodsToProps('planets'))
-export const StarshipList = createList(mapMethodsToProps('starships'))
-export const FilmsList = createList(mapMethodsToProps('films'))
-export const SpeciesList = createList(mapMethodsToProps('species'))
-export const VehiclesList = createList(mapMethodsToProps('vehicles'))
-export const CharactersList = createList(mapMethodsToProps('people'))
+export const PlanetList = createList(mapMethodsToProps('planets'), 'planets')
+export const StarshipList = createList(mapMethodsToProps('starships'), 'starships')
+export const FilmsList = createList(mapMethodsToProps('films'), 'films')
+export const SpeciesList = createList(mapMethodsToProps('species'), 'species')
+export const VehiclesList = createList(mapMethodsToProps('vehicles'), 'vehicles')
+export const CharactersList = createList(mapMethodsToProps('people'), 'people')

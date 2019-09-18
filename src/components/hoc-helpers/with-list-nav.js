@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import Spinner from '../spinner';
-import ErrorIndicator from '../error-indicator';
 import Pagination from '../pagination'
 import Breadcrumbs from '../breadcrumbs'
-
+import style from './with-list-nav.module.scss'
 
 
 const withListNav = ({breadcrumbs}) => (View) => {
   class withListNav extends Component {
     state = {
       itemId: this.props.match.params.id,
-      count: null
+      count: null,
+      pageSize: 10
     }
   
     onPaginationSelected = (itemId) => {
@@ -44,16 +43,19 @@ const withListNav = ({breadcrumbs}) => (View) => {
     render() {
       const { history, match } = this.props;
       const { id } = match.params;
-  
-    
+      
       return (
         <div>  
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className={style.navBox}>
             {breadcrumbs && <Breadcrumbs />}
-            
-            {this.state.count === null ? null :
-              <Pagination count={this.state.count} pageSize="10" current={1} onPageChanged={this.onPaginationSelected} catalog={this.props.catalog} />
-            } 
+            {/* {((this.state.count !== null) && (this.state.count > this.state.pageSize)) && (
+              <div className={style.pagination}>
+                <Pagination count={this.state.count} pageSize={this.state.pageSize} current={1} onPageChanged={this.onPaginationSelected} catalog={this.props.catalog} />
+              </div>
+            )}  */}
+            <div className={style.pagination}>
+              <Pagination count={this.state.count} pageSize={this.state.pageSize} current={1} onPageChanged={this.onPaginationSelected} catalog={this.props.catalog} />
+            </div>
           </div>
 
           <View {...this.props} pageDat={this.state.itemId} getCount={this.getCount} />

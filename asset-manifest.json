@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/star-wars/static/css/main.1b76c8e9.chunk.css",
+    "main.js": "/star-wars/static/js/main.4a17e5b1.chunk.js",
+    "main.js.map": "/star-wars/static/js/main.4a17e5b1.chunk.js.map",
+    "runtime~main.js": "/star-wars/static/js/runtime~main.84c833ae.js",
+    "runtime~main.js.map": "/star-wars/static/js/runtime~main.84c833ae.js.map",
+    "static/js/2.0153a9fb.chunk.js": "/star-wars/static/js/2.0153a9fb.chunk.js",
+    "static/js/2.0153a9fb.chunk.js.map": "/star-wars/static/js/2.0153a9fb.chunk.js.map",
+    "index.html": "/star-wars/index.html",
+    "precache-manifest.841016f7878dcb96f657e7011d6100c8.js": "/star-wars/precache-manifest.841016f7878dcb96f657e7011d6100c8.js",
+    "service-worker.js": "/star-wars/service-worker.js",
+    "static/css/main.1b76c8e9.chunk.css.map": "/star-wars/static/css/main.1b76c8e9.chunk.css.map",
+    "static/media/logo.png": "/star-wars/static/media/logo.0cf7e1d8.png"
+  }
+}

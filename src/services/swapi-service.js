@@ -175,9 +175,6 @@ export default class SwapiService {
   };
 
   getImage = (category, {id}) => {
-    console.log('---------------------->>>')
-    console.log(category)
-    console.log(id)
     return `${this._imageBase}/${category}/${id}.jpg`
   };
 
@@ -191,7 +188,6 @@ export default class SwapiService {
   
 
   getThisUrl = async (url, category) => {
-    console.log(url)
     const res = await fetch(url);
 
     if (!res.ok) {
@@ -199,32 +195,13 @@ export default class SwapiService {
         `, received ${res.status}`)
     }
 
-    // birth_year: "47BBY"
-    // created: "2014-12-10T15:53:41.121000Z"
-    // edited: "2014-12-20T21:17:50.319000Z"
-    // eye_color: "blue"
-    // films: (3) ["https://swapi.co/api/films/5/", "https://swapi.co/api/films/6/", "https://swapi.co/api/films/1/"]
-    // gender: "female"
-    // hair_color: "brown"
-    // height: "165"
-    // homeworld: "https://swapi.co/api/planets/1/"
-    // mass: "75"
-    // name: "Beru Whitesun lars"
-    // skin_color: "light"
-    // species: ["https://swapi.co/api/species/1/"]
-    // starships: []
-    // url: "https://swapi.co/api/people/7/"
-    // vehicles: []
-    // __proto__: Object
-
-
     const item = await res.json();
     const id = this._extractId(item);
     
     return {
       id,
       name: item.name ? item.name : item.title,
-      image: this.getImage((category === 'people' ? 'characters' : category), {id}),
+      image: this.getImage(( (category === 'people' || category === 'pilots') ? 'characters' : category), {id}),
     }
 
     

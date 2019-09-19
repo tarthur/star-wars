@@ -9,10 +9,6 @@ export default class ErrorBoundry extends Component {
   };
 
   componentDidCatch(e) {
-    // alert(1)
-    // console.log('----Error----')
-    // console.log(e)
-    // console.log('----Error----')
     this.setState({
       hasError: true
     });

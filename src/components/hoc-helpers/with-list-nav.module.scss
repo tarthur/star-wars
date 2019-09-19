@@ -1,8 +1,15 @@
 .navBox {
   display: flex;
-  justify-content: space-between;
 }
 
 .pagination {
   margin-bottom: 25px;
+}
+
+.sb {
+  justify-content: space-between;
+}
+
+.fe {
+  justify-content: flex-end;
 }

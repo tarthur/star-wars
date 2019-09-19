@@ -1,14 +1,9 @@
 import React from 'react';
-import ItemDetails, { Record } from '../item-details';
-import { withSwapiService } from '../hoc-helpers';
 import RelatedDataBoxes from '../related-data-boxes'
-import Breadcrumbs from '../breadcrumbs'
-import {
-  compose } from '../hoc-helpers';
 import Spinner from '../spinner';
 
 
-class SomeContainer extends React.Component {
+class DetailsBox extends React.Component {
   state = {
     item: null,
   };
@@ -49,7 +44,6 @@ class SomeContainer extends React.Component {
     
     return (
       <div>
-        {/* <Breadcrumbs /> */}
         {this.props.children(item)}
         <RelatedDataBoxes boxes={item.boxes} />
       </div>
@@ -57,4 +51,4 @@ class SomeContainer extends React.Component {
   }
 };
 
-export default SomeContainer;
+export default DetailsBox;

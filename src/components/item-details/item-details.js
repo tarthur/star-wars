@@ -18,19 +18,27 @@ export {
 
 export default class ItemDetails extends Component {
 
+
+  onError = e => {
+    e.currentTarget.src = 'https://www.theteashoppewv.com/wp-content/uploads/2018/08/Star-Wars.jpg'
+  }
+    
   render() {
     const item = this.props.item;
-    const { name } = item;
+    const { name, image } = item;
 
     return (
       <div className="item-details card">
         <img className="item-image"
-          src={this.props.image}
-          alt="item"/>
+          src={image}
+          alt="item"
+          onError={this.onError} />
 
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
+            {/* {this.props.children} */}
+
             {
               React.Children.map(this.props.children, (child) => {
                 return React.cloneElement(child, { item });

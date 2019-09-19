@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const Header = () => {
+const CatalogsList = () => {
   const arr = ['people', 'films', 'species', 'starships', 'vehicles', 'planets'];
 
   const getItems = () => {
@@ -35,4 +35,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default CatalogsList;

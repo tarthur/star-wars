@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
-import Header from '../catalogs-list/catalogs-list';
+import CatalogsList from '../catalogs-list/catalogs-list';
 import ErrorBoundry from '../error-boundry';
 import SwapiService from '../../services/swapi-service';
 import {BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
-import { 
-  StarshipList, 
-  PlanetList, 
-  FilmsList,
-  SpeciesList,
-  VehiclesList,
-  CharactersList,
-  FilmsDetail, 
-  SpeciesDetail,
-  CharactersDetails,
-  StarshipDetails,
-  VehiclesDetails,
-  PlanetsDetails
-} from '../sw-components';
+import { StarshipList, PlanetList,  FilmsList,
+  SpeciesList, VehiclesList, CharactersList,
+} from '../lists/item-lists';
+import { FilmsDetail, SpeciesDetail, CharactersDetails,
+  StarshipDetails, VehiclesDetails,  PlanetsDetails
+} from '../lists/item-details';
 import { SwapiServiceProvider } from '../swapi-service-context';
 import './app.scss';
 import logo from '../../assets/images/logo.png'
@@ -38,7 +30,7 @@ export default class App extends Component {
               </h3>
 
               <Switch>
-                <Route path="/" exact component={Header} />
+                <Route path="/" exact component={CatalogsList} />
                 
                 <Route path="/starships/page/:id" component={StarshipList} />
                 <Route path="/films/page/:id" component={FilmsList} />

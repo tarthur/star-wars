@@ -1,19 +1,14 @@
 import React from 'react';
 import ItemDetails, { Record } from '../item-details';
 import { withSwapiService } from '../hoc-helpers';
-import RelatedDataBoxes from '../related-data-boxes'
-import Breadcrumbs from '../breadcrumbs'
-import {
-  compose } from '../hoc-helpers';
+import { compose } from '../hoc-helpers';
 import { withRouter } from 'react-router-dom';
-import SomeContainer from './some-container'
+import DetailsBox from './details-box'
 
 
-
-
-const films = item => {
+const filmsDetails = item => {
   return (
-    <ItemDetails item={item} image={item.image}>
+    <ItemDetails item={item}>
       <Record field="created" label="Date Created" />
       <Record field="director" label="Director" />
       <Record field="producer" label="Producer(s)" />
@@ -22,9 +17,9 @@ const films = item => {
   )
 }
 
-const species = item => {
+const speciesDetails = item => {
   return (
-    <ItemDetails item={item} image={item.image}>
+    <ItemDetails item={item}>
       <Record field="classification" label="Classification" />
       <Record field="designation" label="Designation" />
       <Record field="language" label="Language" />
@@ -37,9 +32,9 @@ const species = item => {
   )
 }
 
-const starships = item => {
+const starshipsDetails = item => {
   return (
-    <ItemDetails item={item} image={item.image}>
+    <ItemDetails item={item}>
       <Record field="model" label="Model" />
       <Record field="manufacturer" label="Manufacturer" />
       <Record field="cls" label="Class" />
@@ -54,9 +49,9 @@ const starships = item => {
   )
 }
 
-const vehicles = item => {
+const vehiclesDetails = item => {
   return (
-    <ItemDetails item={item} image={item.image}>
+    <ItemDetails item={item}>
       <Record field="model" label="Model" />
       <Record field="manufacturer" label="Manufacturer" />
       <Record field="cls" label="Class" />
@@ -70,9 +65,9 @@ const vehicles = item => {
   )
 }
 
-const planets = item => {
+const planetsDetails = item => {
   return (
-    <ItemDetails item={item} image={item.image}>
+    <ItemDetails item={item}>
       <Record field="population" label="Population" />
       <Record field="rotationReriod" label="Rotation Period" />
       <Record field="orbitalPeriod" label="Orbital Period" />
@@ -85,9 +80,9 @@ const planets = item => {
   )
 }
 
-const people = item => {
+const peopleDetails = item => {
   return (
-    <ItemDetails item={item} image={item.image}>
+    <ItemDetails item={item}>
       <Record field="birthYear" label="Birth Year" />
       <Record field="height" label="Height" />
       <Record field="mass" label="Mass" />
@@ -98,25 +93,19 @@ const people = item => {
   )
 }
 
-
-
-
-
 const detailsCreator = (category, items) => {
-  const FilmsDetails = (props) => {
+  const DetailsBoxWrap = (props) => {
     const { id } = props.match.params;
 
     return (
-      <SomeContainer {...props} itemId={id} category={category} >
+      <DetailsBox {...props} itemId={id} category={category} >
         {items}
-      </SomeContainer>
+      </DetailsBox>
     );
   };
 
-  return FilmsDetails
+  return DetailsBoxWrap
 }
-
-
 
 const mapMethodsToProps = (swapiService) => {
   return {
@@ -127,34 +116,29 @@ const mapMethodsToProps = (swapiService) => {
 export const FilmsDetail = compose(
   withRouter,
   withSwapiService(mapMethodsToProps)
-)(detailsCreator('films', films));
+)(detailsCreator('films', filmsDetails));
 
 export const SpeciesDetail = compose(
   withRouter,
   withSwapiService(mapMethodsToProps)
-)(detailsCreator('species', species));
-
+)(detailsCreator('species', speciesDetails));
 
 export const CharactersDetails = compose(
   withRouter,
   withSwapiService(mapMethodsToProps)
-)(detailsCreator('people', people));
-
+)(detailsCreator('people', peopleDetails));
 
 export const StarshipDetails = compose(
   withRouter,
   withSwapiService(mapMethodsToProps)
-)(detailsCreator('starships', starships));
-
+)(detailsCreator('starships', starshipsDetails));
 
 export const VehiclesDetails = compose(
   withRouter,
   withSwapiService(mapMethodsToProps)
-)(detailsCreator('vehicles', vehicles));
-
+)(detailsCreator('vehicles', vehiclesDetails));
 
 export const PlanetsDetails = compose(
   withRouter,
   withSwapiService(mapMethodsToProps)
-)(detailsCreator('planets', planets));
-
+)(detailsCreator('planets', planetsDetails));

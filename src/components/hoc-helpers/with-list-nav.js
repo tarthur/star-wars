@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pagination from '../pagination'
 import Breadcrumbs from '../breadcrumbs'
 import style from './with-list-nav.module.scss'
+import cn from 'classnames'
 
 
 const withListNav = ({breadcrumbs}) => (View) => {
@@ -46,7 +47,7 @@ const withListNav = ({breadcrumbs}) => (View) => {
       
       return (
         <div>  
-          <div className={style.navBox}>
+          <div className={cn(style.navBox, (breadcrumbs ? style.sb : style.fe))}>
             {breadcrumbs && <Breadcrumbs />}
             {/* {((this.state.count !== null) && (this.state.count > this.state.pageSize)) && (
               <div className={style.pagination}>

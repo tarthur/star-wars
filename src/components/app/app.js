@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CatalogsList from '../catalogs-list/catalogs-list';
 import ErrorBoundry from '../error-boundry';
 import SwapiService from '../../services/swapi-service';
-import {BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
+import {HashRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
 import { StarshipList, PlanetList,  FilmsList,
   SpeciesList, VehiclesList, CharactersList,
 } from '../lists/item-lists';

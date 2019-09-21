@@ -56,7 +56,7 @@ class RelatedDataBox extends Component {
     const ifff = !(this.state.itemsArray.length === this.props.box.arr.length);
   
     return (
-      <div className="related-box col-sm-4">
+      <div className="related-box col-md-6 col-lg-4">
         <div className="card border-light " style={{}}>
           <div className="card-header">
             {this.props.box.title}

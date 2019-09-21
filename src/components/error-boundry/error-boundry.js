@@ -5,19 +5,27 @@ import ErrorIndicator from '../error-indicator/error-indicator';
 export default class ErrorBoundry extends Component {
 
   state = {
-    hasError: false
+    hasError: false,
+    error: null
   };
 
-  componentDidCatch(e) {
+  componentDidCatch(error, errorInfo) {
+
     this.setState({
-      hasError: true
+      hasError: true,
+      // error: errorInfo.componentStack
     });
   }
 
   render() {
 
     if (this.state.hasError) {
-      return <ErrorIndicator />
+      return (
+        <>
+          {/* {this.state.error} */}
+          <ErrorIndicator />
+        </>
+      )
     }
 
     return this.props.children;

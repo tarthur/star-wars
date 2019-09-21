@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { withData } from '../hoc-helpers';
 import SwapiService from '../../services/swapi-service';
 import ItemCard from '../item-card/item-card'
+import style from './item-list.module.scss'
 
 
 const ItemList = (props) => {
@@ -19,7 +20,7 @@ const ItemList = (props) => {
   });
 
   return (
-   <div>
+   <div className={style.box}>
       <div className="row">
         {items}
       </div>

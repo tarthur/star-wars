@@ -62,9 +62,9 @@ const withData = (View) => {
         )
       }
 
-      if (error) {
-        return <ErrorIndicator />;
-      }
+      // if (error) {
+      //   return <ErrorIndicator />;
+      // }
 
       return <View {...this.props} data={data} />;
     }

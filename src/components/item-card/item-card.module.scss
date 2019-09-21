@@ -8,3 +8,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.catalogCard {
+  flex: 0 0 20%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 20%;
+  margin-bottom: 30px;
+}

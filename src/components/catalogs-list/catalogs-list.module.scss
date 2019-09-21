@@ -1,0 +1,57 @@
+.catalogList {
+  @media (max-width: 600px) {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+}
+
+.catalogRow {
+  margin-bottom: -30px;
+}
+
+.cardBox {
+  margin-bottom: 30px;
+}
+
+.picBox {
+  overflow: hidden;
+
+  img {
+    transform: scale(1);
+    transition: transform  0.3s;
+  }
+}
+
+.card {
+  box-shadow: 0 0 30px rgba(#f6a113, .15);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+
+
+  &:hover {
+    box-shadow: 0 0 30px rgba(#f6a113, .25);
+
+    .cardTitle {
+      color: #00bc8c;
+      letter-spacing: 0.02em;
+    }
+
+    .picBox {
+      img {
+        transform: scale(1.01);
+      }
+    }
+  }
+}
+
+.cardTitle {
+  letter-spacing: 0em;
+  transition: letter-spacing  0.3s;
+  margin-bottom: 0;
+}
+
+.cardBody {
+  text-transform: uppercase;
+}

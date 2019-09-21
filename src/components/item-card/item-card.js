@@ -27,7 +27,7 @@ export default class ItemCard extends React.Component {
     const {id, name, catalog} = this.props
 
     return (
-      <div className="catalog-card card-box" key={id} >
+      <div className={style.catalogCard} key={id} >
         <Link to={`/${catalog}/${id}`}>
           <div className="card">
             <div className={style.imgBox} >

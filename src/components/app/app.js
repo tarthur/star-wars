@@ -10,7 +10,7 @@ import { FilmsDetail, SpeciesDetail, CharactersDetails,
   StarshipDetails, VehiclesDetails,  PlanetsDetails
 } from '../lists/item-details';
 import { SwapiServiceProvider } from '../swapi-service-context';
-import './app.scss';
+import style from './app.module.scss';
 import logo from '../../assets/images/logo.png'
 
 
@@ -23,7 +23,7 @@ export default class App extends Component {
         <SwapiServiceProvider value={swapiService} >
           <Router>
             <div className="stardb-app">
-              <h3 className="logo">
+              <h3 className={style.logo}>
                 <Link to="/">
                   <img src={logo} className="img-fluid" />
                 </Link>

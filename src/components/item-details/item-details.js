@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import './item-details.css';
+
 
 const Record = ({ item, field, label }) => {
   // debugger;

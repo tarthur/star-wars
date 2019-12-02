@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cn from 'classnames'
-import style from './catalogs-list.module.scss'
+import cn from 'classnames';
+import style from './catalogs-list.module.scss';
 
 
 const CatalogsList = () => {

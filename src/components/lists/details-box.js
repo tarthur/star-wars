@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedDataBoxes from '../related-data-boxes'
+import RelatedDataBoxes from '../related-data-boxes';
 import Spinner from '../spinner';
 
 

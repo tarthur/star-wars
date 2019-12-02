@@ -1,12 +1,7 @@
 import React from 'react';
-import ItemList from '../item-list/item-list';
-import {
-  withData,
-  withSwapiService,
-  withListNav,
-  compose 
-} from '../hoc-helpers';
 import { withRouter } from 'react-router-dom';
+import ItemList from '../item-list/item-list';
+import { withData, withSwapiService, withListNav, compose } from '../hoc-helpers';
 
 
 const mapMethodsToProps = (category) => {

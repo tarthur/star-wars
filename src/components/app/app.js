@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { SwapiServiceProvider } from '../swapi-service-context';
+import SwapiService from '../../services/swapi-service';
+import * as Lists from '../lists/item-lists';
+import * as Details from '../lists/item-details';
 import CatalogsList from '../catalogs-list/catalogs-list';
 import ErrorBoundry from '../error-boundry';
-import SwapiService from '../../services/swapi-service';
-import {HashRouter as Router, Switch, Route, Link, NavLink, Redirect} from 'react-router-dom'
-import { StarshipList, PlanetList,  FilmsList,
-  SpeciesList, VehiclesList, CharactersList,
-} from '../lists/item-lists';
-import { FilmsDetail, SpeciesDetail, CharactersDetails,
-  StarshipDetails, VehiclesDetails,  PlanetsDetails
-} from '../lists/item-details';
-import { SwapiServiceProvider } from '../swapi-service-context';
+import Logo from '../logo/logo';
 import style from './app.module.scss';
-import logo from '../../assets/images/logo.png'
 
 
 export default class App extends Component {
@@ -23,28 +19,24 @@ export default class App extends Component {
         <SwapiServiceProvider value={swapiService} >
           <Router>
             <div className="stardb-app">
-              <h3 className={style.logo}>
-                <Link to="/">
-                  <img src={logo} className="img-fluid" />
-                </Link>
-              </h3>
+              <Logo classes={[style.logo]} />
 
               <Switch>
                 <Route path="/" exact component={CatalogsList} />
                 
-                <Route path="/starships/page/:id" component={StarshipList} />
-                <Route path="/films/page/:id" component={FilmsList} />
-                <Route path="/planets/page/:id" component={PlanetList} />
-                <Route path="/vehicles/page/:id" component={VehiclesList} />
-                <Route path="/people/page/:id" component={CharactersList} />
-                <Route path="/species/page/:id" component={SpeciesList} />
+                <Route path="/starships/page/:id" component={Lists.StarshipList} />
+                <Route path="/films/page/:id" component={Lists.FilmsList} />
+                <Route path="/planets/page/:id" component={Lists.PlanetList} />
+                <Route path="/vehicles/page/:id" component={Lists.VehiclesList} />
+                <Route path="/people/page/:id" component={Lists.CharactersList} />
+                <Route path="/species/page/:id" component={Lists.SpeciesList} />
 
-                <Route path="/films/:id" component={FilmsDetail} />
-                <Route path="/species/:id" component={SpeciesDetail} />
-                <Route path="/people/:id" component={CharactersDetails} />
-                <Route path="/starships/:id" component={StarshipDetails} />
-                <Route path="/vehicles/:id" component={VehiclesDetails} />
-                <Route path="/planets/:id" component={PlanetsDetails} />
+                <Route path="/films/:id" component={Details.FilmsDetail} />
+                <Route path="/species/:id" component={Details.SpeciesDetail} />
+                <Route path="/people/:id" component={Details.CharactersDetails} />
+                <Route path="/starships/:id" component={Details.StarshipDetails} />
+                <Route path="/vehicles/:id" component={Details.VehiclesDetails} />
+                <Route path="/planets/:id" component={Details.PlanetsDetails} />
 
                 <Route render={() => <h2>Page not found</h2>} />
               </Switch>

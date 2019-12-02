@@ -160,8 +160,13 @@ export default class SwapiService {
   }
   
   getObjects = async (category, page) => {
-    
+    // const data1 = new Date()    
     const res = await this.getResource(`/${category}/?page=${page}`);
+    // const data2 = new Date();
+
+    // if (data2 - data1 > 5000) {
+    //   console.log('Извините данные слишком долго грузятся. Попробовать еще раз!')
+    // }
 
     return {
       ...res,
